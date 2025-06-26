@@ -21,11 +21,15 @@ bool initialize_window(void) {
     }
     printf("SDL initialized successfully!\n");
 
+    const SDL_DisplayMode* display_mode = SDL_GetCurrentDisplayMode(1);
+    window_width = display_mode->w;
+    window_height = display_mode->h;
+
     window = SDL_CreateWindow(
             "Caesar",
             window_width,
             window_height,
-            0
+            SDL_WINDOW_BORDERLESS
         );
 
     if (!window) {
